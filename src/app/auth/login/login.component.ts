@@ -4,6 +4,7 @@ import {UserService} from "../../shared/services/users.service";
 import {Message} from "../../shared/models/message.model";
 import {User} from "../../shared/models/user.model";
 import {AuthService} from "../../shared/services/auth.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'wfm-login',
@@ -17,11 +18,20 @@ export class LoginComponent implements OnInit {
 
   constructor(
       private userService: UserService,
-      private authService: AuthService
+      private authService: AuthService,
+      private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.message = new Message('danger', '');
+
+    this.route.queryParams.subscribe(
+        (params: Params)=> {
+            if(params['nowCanLogin']){
+                this.showMessage('Теперь вы можете войти', 'success')
+            }
+        }
+    )
     this.form = new FormGroup({
         'email': new FormControl(null, [Validators.required, Validators.email]),
         'password': new FormControl(null, [Validators.required, Validators.minLength(6)])
