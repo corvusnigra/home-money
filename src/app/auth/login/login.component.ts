@@ -4,7 +4,7 @@ import {UserService} from "../../shared/services/users.service";
 import {Message} from "../../shared/models/message.model";
 import {User} from "../../shared/models/user.model";
 import {AuthService} from "../../shared/services/auth.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
 @Component({
   selector: 'wfm-login',
@@ -19,15 +19,16 @@ export class LoginComponent implements OnInit {
   constructor(
       private userService: UserService,
       private authService: AuthService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router: Router
   ) { }
 
   ngOnInit() {
     this.message = new Message('danger', '');
 
     this.route.queryParams.subscribe(
-        (params: Params)=> {
-            if(params['nowCanLogin']){
+        (params: Params) => {
+            if (params['nowCanLogin']) {
                 this.showMessage('Теперь вы можете войти', 'success')
             }
         }
@@ -45,23 +46,24 @@ export class LoginComponent implements OnInit {
         }, 5000);
     }
 
-  onSubmit(){
-     let formData = this.form.value;
+  onSubmit() {
+     const formData = this.form.value;
      this.userService.getUserByEmail(formData.email)
-         .subscribe((user: User)=> {
-            if(user){
-              if(user.password ===  formData.password){
+         .subscribe((user: User) => {
+            if (user) {
+              if (user.password ===  formData.password) {
                 this.authService.login();
                 window.localStorage.setItem('user', JSON.stringify(user));
+                this.router.navigate(['/system', 'bill']);
 
               } else {
-                  this.showMessage('Пароль не правильный')
+                  this.showMessage('Пароль не правильный');
               }
 
             }else {
-                this.showMessage('Пользователь не найден')
+                this.showMessage('Пользователь не найден');
             }
-         })
+         });
   }
 
 }
