@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+
+import {BillService} from "../shared/services/bill.service";
+import {Bill} from "./models/bill.model";
 
 @Component({
   selector: 'wfm-bill-page',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private billService: BillService
+  ) { }
 
   ngOnInit() {
+    Observable.combineLatest(
+        this.billService.getBill(),
+        this.billService.getCurrency()
+    ).subscribe((data: [Bill, any]) => {
+        console.log(data)
+    })
   }
 
 }
