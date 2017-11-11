@@ -32,6 +32,21 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
+    },
+    {
+      "name": "вывыв",
+      "capacity": 3,
+      "id": 4
+    },
+    {
+      "name": "фыф",
+      "capacity": "1",
+      "id": 5
+    },
+    {
+      "name": "фывфв",
+      "capacity": 9,
+      "id": 6
     }
   ],
   "events": [
