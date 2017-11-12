@@ -19,8 +19,8 @@
   },
   "categories": [
     {
-      "name": "Дом",
-      "capacity": 15000,
+      "name": "Еда",
+      "capacity": 10000,
       "id": 1
     },
     {
@@ -29,24 +29,14 @@
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Машина",
-      "capacity": 7000
+      "name": "Дом",
+      "capacity": 80000,
+      "id": 3
     },
     {
-      "name": "вывыв",
-      "capacity": 3,
+      "name": "Новая",
+      "capacity": 14444,
       "id": 4
-    },
-    {
-      "name": "фыф",
-      "capacity": "1",
-      "id": 5
-    },
-    {
-      "name": "фывфв",
-      "capacity": 9,
-      "id": 6
     }
   ],
   "events": [
