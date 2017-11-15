@@ -18,6 +18,7 @@ import { AddCategoryComponent } from './records-page/add-category/add-category.c
 import { EditCategoryComponent } from './records-page/edit-category/edit-category.component';
 import {SharedModule} from "../shared/shared.module";
 import {CategoryService} from "./shared/services/category.service";
+import {EventService} from "./shared/services/event.service";
 @NgModule({
 
     declarations: [
@@ -43,7 +44,8 @@ import {CategoryService} from "./shared/services/category.service";
     ],
     providers: [
         BillService,
-        CategoryService
+        CategoryService,
+        EventService
     ]
 })
 
