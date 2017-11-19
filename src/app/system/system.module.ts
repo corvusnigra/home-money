@@ -19,6 +19,11 @@ import { EditCategoryComponent } from './records-page/edit-category/edit-categor
 import {SharedModule} from "../shared/shared.module";
 import {CategoryService} from "./shared/services/category.service";
 import {EventService} from "./shared/services/event.service";
+import { HistoryChartComponent } from './history-page/history-chart/history-chart.component';
+import { HistoryEventsComponent } from './history-page/history-events/history-events.component';
+import { HistoryDetailComponent } from './history-page/history-detail/history-detail.component';
+import { HistoryFilterComponent } from './history-page/history-filter/history-filter.component';
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 @NgModule({
 
     declarations: [
@@ -35,12 +40,17 @@ import {EventService} from "./shared/services/event.service";
         MomentPipe,
         AddEventComponent,
         AddCategoryComponent,
-        EditCategoryComponent
+        EditCategoryComponent,
+        HistoryChartComponent,
+        HistoryEventsComponent,
+        HistoryDetailComponent,
+        HistoryFilterComponent
     ],
     imports: [
         CommonModule,
         SharedModule,
-        SystemRoutngModule
+        SystemRoutngModule,
+        NgxChartsModule
     ],
     providers: [
         BillService,

@@ -39,8 +39,8 @@ export class AddEventComponent implements OnInit {
     onSubmit(form: NgForm) {
         let {type, amount, description, category} = form.value;
 
-        const event = new WFMEvent(type, amount, category, momemt().format('DD.MM.YYYY HH:mm:ss'), description);
-
+        const event = new WFMEvent(type, amount, +category, momemt().format('DD.MM.YYYY HH:mm:ss'), description);
+        console.log(event)
         this.billService.getBill()
             .subscribe((bill: Bill) => {
                 let value = 0;

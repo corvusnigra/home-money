@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 102200,
+    "value": 97556,
     "currency": "RUB"
   },
   "categories": [
@@ -24,24 +24,14 @@
       "id": 1
     },
     {
-      "name": "Еда",
-      "capacity": 10000,
+      "name": "Дом",
+      "capacity": 80000,
       "id": 2
     },
     {
-      "name": "Дом",
-      "capacity": 80000,
-      "id": 3
-    },
-    {
-      "name": "Новая",
-      "capacity": 14444,
-      "id": 4
-    },
-    {
-      "name": "New",
+      "name": "Машина",
       "capacity": 10000,
-      "id": 5
+      "id": 3
     }
   ],
   "events": [
@@ -84,62 +74,6 @@
       "date": "10.06.2017 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
-    },
-    {
-      "type": "outcome",
-      "amount": 13333,
-      "category": 1,
-      "date": "15.11.2017 23:38:40",
-      "description": "dfsd",
-      "id": 6
-    },
-    {
-      "type": "income",
-      "amount": 10000000,
-      "category": 1,
-      "date": "15.11.2017 23:40:29",
-      "description": "sfsdfsdf",
-      "id": 7
-    },
-    {
-      "type": "outcome",
-      "amount": 100000000000,
-      "category": 1,
-      "date": "16.11.2017 00:11:52",
-      "description": "sfg",
-      "id": 8
-    },
-    {
-      "type": "outcome",
-      "amount": 100000,
-      "category": 1,
-      "date": "16.11.2017 00:15:37",
-      "description": "test",
-      "id": 9
-    },
-    {
-      "type": "income",
-      "amount": 100000,
-      "category": 1,
-      "date": "16.11.2017 00:15:50",
-      "description": " test",
-      "id": 10
-    },
-    {
-      "type": "income",
-      "amount": 1200,
-      "category": "4",
-      "date": "16.11.2017 00:18:18",
-      "description": "test",
-      "id": 11
-    },
-    {
-      "type": "income",
-      "amount": 1000,
-      "category": "2",
-      "date": "16.11.2017 12:07:16",
-      "description": "test",
-      "id": 12
     }
   ]
 }
