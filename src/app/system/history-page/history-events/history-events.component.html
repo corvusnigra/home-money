@@ -11,8 +11,8 @@
               <input
                       type="text"
                       class="form-control"
-                      [placeholder]="serchPlaceholder"
-                      [(ngModel)]="serchValue"
+                      [placeholder]="searchPlaceholder"
+                      [(ngModel)]="searchValue"
               >
             </div>
             <div class="btn-group" wfmDropdown>
@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr  *ngFor="let e of events | WFMFilter : serchValue : searchField; let idx = index">
+            <tr  *ngFor="let e of events | WFMFilter:searchValue:searchField; let idx = index">
               <th scope="row">{{ idx + 1 }}</th>
               <td>{{ e.amount | number : '1.2' }}</td>
               <td>{{ e.date | wfmMoment : 'DD.MM.YYYY HH:mm:ss'}}</td>

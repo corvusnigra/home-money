@@ -11,9 +11,9 @@ export class HistoryEventsComponent implements OnInit {
 
     @Input() categories: Category[] = [];
     @Input() events: WFMEvent[] = [];
-    serchValue = '';
-    serchPlaceholder = 'Cумма';
-    searchField = 'amount'
+    searchValue = '';
+    searchPlaceholder = 'Сумма';
+    searchField = 'amount';
 
 
     constructor() {
@@ -41,7 +41,7 @@ export class HistoryEventsComponent implements OnInit {
             type: 'Тип'
         }
 
-        this.serchPlaceholder = nameMap[field];
+        this.searchPlaceholder = nameMap[field];
         this.searchField = field
     }
 
