@@ -18,6 +18,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     events: WFMEvent[];
     isLoaded = false;
     dataChart = [];
+    isFilterVisible = false;
 
 
     constructor(private eventService: EventService,
@@ -50,6 +51,18 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
             });
         })
+    }
+
+    toggleFilterVisibility(dir: boolean) {
+        this.isFilterVisible = dir;
+    }
+
+    openFilter() {
+        this.toggleFilterVisibility(true);
+    }
+
+    onFilterCancel() {
+        this.toggleFilterVisibility(false);
     }
 
     ngOnDestroy() {

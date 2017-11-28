@@ -1,8 +1,8 @@
-<div class="modal fade">
+<div class="modal fade in">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close">
+        <button type="button" class="close" (click)="filterClose()">
           <span>×</span>
         </button>
         <h4 class="modal-title">Фильтр</h4>
@@ -10,19 +10,21 @@
       <div class="modal-body">
         <div class="form-group">
           <label class="control-label" for="period">Выберите период</label>
-          <select class="form-control" id="period">
-            <option>тип</option>
+          <select class="form-control" id="period" [(ngModel)]="selectedPeriod">
+            <option *ngFor="let p of timePeriods" [value]="p.type">{{ p.label }}</option>
           </select>
         </div>
         <div class="form-group">
           <label class="control-label">Выберите тип события</label>
           <div>
-            <label>
+            <label *ngFor="let t of types">
               <input
                       class="checkbox"
                       type="checkbox"
+                      [value]="t.type"
+                      (change)="handleChangeType($event.target)"
               >
-              <span>еуче</span>
+              <span>{{ t.label }}</span>
             </label>
           </div>
         </div>
@@ -39,7 +41,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary">Отмена</button>
+          <button type="button" class="btn btn-secondary" (click)="filterClose()">Отмена</button>
           <button type="button" class="btn btn-primary">Применить</button>
         </div>
       </div>
