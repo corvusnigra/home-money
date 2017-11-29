@@ -5,6 +5,7 @@ import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 import {WFMEvent} from "../shared/models/event.model";
 import {Category} from "../shared/models/category.model";
+import * as moment from 'moment';
 
 @Component({
     selector: 'wfm-history-page',
@@ -19,6 +20,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     isLoaded = false;
     dataChart = [];
     isFilterVisible = false;
+    filteredEvents: WFMEvent[] = [];
 
 
     constructor(private eventService: EventService,
@@ -33,6 +35,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
         ).subscribe((data: [Category[], WFMEvent[]]) => {
             this.categories = data[0];
             this.events = data[1];
+            this.setOriginEvents();
             this.calculateDataChart();
             this.isLoaded = true;
         });
@@ -40,7 +43,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
     calculateDataChart(): void {
         this.categories.forEach((cat) => {
-            const catEvents = this.events.filter((e: WFMEvent) => e.category === cat.id && e.type === 'outcome');
+            const catEvents = this.filteredEvents.filter((e: WFMEvent) => e.category === cat.id && e.type === 'outcome');
 
             this.dataChart.push({
                 name: cat.name,
@@ -57,12 +60,38 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
         this.isFilterVisible = dir;
     }
 
+    private setOriginEvents() {
+        this.filteredEvents = this.events.slice();
+    }
+
     openFilter() {
         this.toggleFilterVisibility(true);
     }
 
     onFilterCancel() {
         this.toggleFilterVisibility(false);
+        this.setOriginEvents();
+        this.calculateDataChart();
+    }
+
+    onFilterApply(filterData) {
+        this.toggleFilterVisibility(false);
+        this.setOriginEvents();
+
+        const startPeriod = moment().startOf(filterData.period).startOf('d');
+        const endPeriod = moment().endOf(filterData.period).endOf('d');
+
+        this.filteredEvents = this.filteredEvents
+            .filter((e) => {
+                return  filterData.types.indexOf(e.type) !== -1;
+            })
+            .filter((e) => {
+                return filterData.categories.indexOf(e.category.toString()) !== -1;
+            })
+            .filter((e) => {
+                const momemtDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+                return momemtDate.isBetween(startPeriod, endPeriod);
+            });
     }
 
     ngOnDestroy() {

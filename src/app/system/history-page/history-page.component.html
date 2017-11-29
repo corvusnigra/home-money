@@ -16,12 +16,13 @@
   <wfm-history-chart [data]="dataChart"></wfm-history-chart>
   <wfm-history-events
           [categories]="categories"
-          [events]="events"
+          [events]="filteredEvents"
   ></wfm-history-events>
   <div *ngIf="isFilterVisible">
     <wfm-history-filter
-            (onFilterApply)="onFilterApply()"
+            (onFilterApply)="onFilterApply($event)"
             (onFilterCancel)="onFilterCancel()"
+            [categories]="categories"
     ></wfm-history-filter>
   </div>
 </div>

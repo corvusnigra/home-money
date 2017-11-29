@@ -31,18 +31,20 @@
         <div class="form-group">
           <label class="control-label">Выберите категории</label>
           <div>
-            <label>
+            <label *ngFor="let c of categories">
               <input
                       class="checkbox"
                       type="checkbox"
+                      [value]="c.id"
+                      (change)="handleChangeCategory($event.target)"
               >
-              <span>еуче</span>
+              <span>{{ c.name }}</span>
             </label>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" (click)="filterClose()">Отмена</button>
-          <button type="button" class="btn btn-primary">Применить</button>
+          <button type="button" class="btn btn-primary" (click)="filterApply()" >Применить</button>
         </div>
       </div>
     </div>
